@@ -9,3 +9,4 @@ dist/
 *.egg-info
 *.swp
 .vscode/
+secret_flux-system.yaml

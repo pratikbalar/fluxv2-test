@@ -1,0 +1,52 @@
+# ---
+# apiVersion: source.toolkit.fluxcd.io/v1beta1
+# kind: GitRepository
+# metadata:
+#   name: new-repository
+#   namespace: default
+# spec:
+#   # The interval at which to check the upstream for updates
+#   interval: 1m
+#   # The repository URL, can be a HTTP/S or SSH address
+#   url: https://github.com/Improwised/charts
+#   # The Git reference to checkout and monitor for changes
+#   # (defaults to master)
+#   # For all available options, see:
+#   # https://toolkit.fluxcd.io/components/source/api/#source.toolkit.fluxcd.io/v1beta1.GitRepositoryRef
+#   ref:
+#     branch: bookstack
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: chartmuseum-infra-ldex-co-secrets
+# data:
+#   # HTTP/S basic auth credentials
+#   username: Y2hhcnRtYXN0ZXI=
+#   password: TXF1VkVpbXFvbkpLaER1aFV5
+#   # # TLS credentials (certFile and keyFile, and/or caCert)
+#   # certFile: <base64 encoded certificate>
+#   # keyFile: <base64 encoded key>
+#   # caCert: <base64 encoded CA certificate>
+# ---
+# apiVersion: source.toolkit.fluxcd.io/v1beta1
+# kind: HelmRepository
+# metadata:
+#   name: chartmuseum-infra-ldex-co
+# spec:
+#   # ...omitted for brevity
+#   secretRef:
+#     name: chartmuseum-infra-ldex-co-secrets
+#   url: https://infra.ldex.co
+#   interval: 10m
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: mailhog-repository
+  namespace: mailhog-2
+spec:
+  # The interval at wich to check the upstream for updates
+  interval: 1m
+  # The repository URL, a valid URL contains at least a protocol and host
+  url: https://pratikbalar.github.io/myhelmrepo
