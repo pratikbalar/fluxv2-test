@@ -5,7 +5,7 @@ metadata:
   namespace: mailhog
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:*
+    filter.fluxcd.io/chart-image: glob:v*
 
 spec:
   maxHistory: 3
@@ -19,7 +19,7 @@ spec:
   chart:
     repository: https://pratikbalar.github.io/myhelmrepo
     name: mailhog
-    version: 1.0.0
+    version: 1.0.1
   values:
     image:
       repository: mailhog/mailhog
@@ -46,8 +46,18 @@ spec:
       runAsNonRoot: true
 
     ingress:
-      enabled: false
-
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - host: mailhog.improwised.dev
+          paths: ["/"]
+          port: http
+      tls:
+        - secretName: mailhog-improwised-dev-tls
+          hosts:
+            - mailhog.improwised.dev
     auth:
       enabled: true
       existingSecret: ""
