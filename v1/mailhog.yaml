@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: docker.io/mailhog/mailhog
-      tag: "v1.0.1"
+      tag: "v1.0.0"
       pullPolicy: Always
 
     nameOverride: ""
