@@ -3,6 +3,9 @@ kind: HelmRelease
 metadata:
   name: mailhog-2
   namespace: mailhog-2
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: glob:v*
 spec:
   # maxHistory: 3
   # rollback:
