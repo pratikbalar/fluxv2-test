@@ -31,7 +31,7 @@ spec:
   #   version: 1.0.1
   values:
     image:
-      repository: mailhog/mailhog
+      repository: docker.io/mailhog/mailhog
       tag: "v1.0.0"
       pullPolicy: Always
 
