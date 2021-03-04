@@ -19,7 +19,7 @@ spec:
   chart:
     repository: https://pratikbalar.github.io/myhelmrepo
     name: mailhog
-    version: 1.0.1
+    version: 1.0.0
   values:
     image:
       repository: mailhog/mailhog
